@@ -231,6 +231,30 @@ class myHashMap<K,V> {
          * return value is returned the invoking function based on the remove outcome.
          */
 
+        //Make an index using the key
+        int index = getBucketIndex(key);
+        //Make nodes for the head and for the previous node visited
+        //Previous node should be null to start
+        HashNode<K, V> head = bucket.get(index);
+        HashNode<K, V> previous = null;
+        //Iterate through the hashmap and find the value that equals the key given
+        //Gonna use a while loop so I can check for null
+        while(head != null) {
+            if(head.key.equals(key)) {
+                if(previous == null) {
+                    bucket.set(index, head.next);
+                } else {
+                    previous.next = head.next;
+                }
+                //Change the size of the hashmap if removing element
+                size--;
+                return head.value;
+            }
+            //Iterate
+            previous = head;
+            head = head.next;
+        }
+        //Else null
         return null;
     }
 
