@@ -1,5 +1,5 @@
 /*
- * *** YOUR NAME GOES HERE / YOUR SECTION NUMBER ***
+ * *** Connor Hendren / 002 ***
  *
  * This hashMap object represents an over simplification of Java's implementation of HashMap within
  * Java's Collection Framework Library. You are to complete the following methods:
@@ -406,7 +406,24 @@ class myHashMap<K,V> {
          * replace (see method's prologue above).
          */
 
-        return val;
+        //Make an index using the given key
+        int index = getBucketIndex(key);
+        HashNode<K, V> head = bucket.get(index);
+        //Find the value and store it
+        //Make sure to return the old value
+        //Also set the new value
+        //Maybe use a while loop (might work best with head, can also check easily for null)
+        while(head != null) {
+            if(head.key.equals(key)) {
+                V oldValue = head.value;
+                head.value = val;
+                return oldValue;
+            }
+            //Iterate
+            head = head.next;
+        }
+        //Return null if nothing changed
+        return null;
     }
 
     
@@ -434,6 +451,14 @@ class myHashMap<K,V> {
          * value 'oldval', and is so, it SHOULD call replace(K, V) for code reuse.
          */
 
+        //Find and store the current value
+        V currentValue = get(key);
+        //If not null then use replace (as instructed)
+        if(currentValue != null && currentValue.equals(oldVal)) {
+            replace(key, newVal);
+            return true;
+        }
+        //Else return false
         return false;
     }
 
