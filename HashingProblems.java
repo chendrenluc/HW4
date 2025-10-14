@@ -1,5 +1,5 @@
 /*
- * *** YOUR NAME GOES HERE / YOUR SECTION NUMBER ***
+ * *** Connor Hendren / 002 ***
  *
  * This HashingProblems object contains three methods / problems that you must
  * complete utilize the HashMap object within the Java's Collection Framework Library.
@@ -41,7 +41,20 @@ class HashingProblems {
          * returning 0.0/0.0 IS correct (which would return a non-number).
          */
 
-         return 0.0 / 0.0;
+        //Initialize the sum and a count of how many numbers have been added
+        //Make sum a double just in case
+        //Keep the count as an int
+        double sum = 0.0;
+        int count = 0;
+        //Use a loop to go through the array and add everything to the sum and to the count
+        for(int key : array) {
+            if(map.containsKey(key)) {
+                sum += map.get(key);
+                count++;
+            }
+        }
+        //Now return the result of the division (the average)
+         return sum / count;
   }
 
 
@@ -62,7 +75,17 @@ class HashingProblems {
        * Hint: Consider iterating over the HashMap using the keySet method.
        */
 
-
+      //Make an arraylist to store the result
+      ArrayList<String> result = new ArrayList<>();
+      //Use a loop to iterate through the hashmap
+      //Check if every key is odd
+      //Add the results to the result arraylist
+      for(Integer key : map.keySet()) {
+          if(key % 2 != 0) {
+              result.add(map.get(key));
+          }
+      }
+      //Since I named the arraylist result this just stays the same
       return result;
   }
 
@@ -110,7 +133,24 @@ class HashingProblems {
        * ADD YOUR CODE HERE
        */
 
-      return -1;
+      //Make a hashset to store all the numbers
+      //Also initialize an integer so that there is a count
+      HashSet<Integer> set = new HashSet<>();
+      int count = 0;
+      //Use a loop to check for each number that the number + k exists
+      //Add to the count of matches
+      //First add to the set
+      for(int num : numbers) {
+          set.add(num);
+      }
+      //Now check that the match exists
+      for(int num : numbers) {
+          if(set.contains(num + k)) {
+              count++;
+          }
+      }
+      //Now return the count
+      return count;
   }
 
 } /* end class HashingProblems */
