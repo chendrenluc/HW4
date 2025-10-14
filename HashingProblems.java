@@ -75,8 +75,7 @@ class HashingProblems {
        * Hint: Consider iterating over the HashMap using the keySet method.
        */
 
-      //Make an arraylist to store the result
-      ArrayList<String> result = new ArrayList<>();
+      //ArrayList is already defined above
       //Use a loop to iterate through the hashmap
       //Check if every key is odd
       //Add the results to the result arraylist
